@@ -2,7 +2,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useState } from 'react';
 import Book from '../Book/Book';
 
-const Books = () => {
+const Books = ({data}) => {
     const [allBooks,setAllBooks] = useState([]);
 
     // useEffect(() => {
@@ -21,7 +21,10 @@ const Books = () => {
             <h1 className='text-3xl text-center font-bold'>Books</h1>
             <Suspense fallback={<span>Loading...</span>}>
                 {
-                    <Book ></Book>
+                    data.map((singleBook) => 
+                    <Book key={singleBook.bookId} singleBook={singleBook}>
+
+                    </Book>)
                 }
             </Suspense>
         </div>
