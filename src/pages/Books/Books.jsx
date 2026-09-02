@@ -13,15 +13,15 @@ const Books = () => {
     //     })
     // },[] )
     
-    const bookPromise = fetch('./booksData.json')
-    .then(res => res.json())
+    // const bookPromise = fetch('./booksData.json')
+    // .then(res => res.json())
 
     return (
         <div>
             <h1 className='text-3xl text-center font-bold'>Books</h1>
             <Suspense fallback={<span>Loading...</span>}>
                 {
-                    <Book bookPromise={bookPromise}></Book>
+                    <Book ></Book>
                 }
             </Suspense>
         </div>
