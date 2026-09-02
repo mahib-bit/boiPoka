@@ -1,27 +1,29 @@
 import React, { use } from 'react';
 
-const Book = ({singleBook}) => {
+const Book = ({ singleBook }) => {
 
     // const data=use(bookPromise);
     // console.log(data)
 
-    const {bookName, author, image ,review, rating, tags} = singleBook;
+    const { bookName, author, image, review, rating, category, tags } = singleBook;
 
     return (
-        <div className="grid grid-cols-3 card bg-base-100 w-96 shadow-sm">
-            <figure>
+        
+        <div className=" card bg-base-100 w-96 shadow-sm border border-mist-500 p-6">
+            <figure className='bg-mist-500 rounded-xl'>
                 <img
                     src={image} />
             </figure>
             <div className="card-body">
+                <div className="badge text-lime-400 border-lime-200">{tags}</div>
                 <h2 className="card-title">
-                    Card Title
-                    <div className="badge badge-secondary">NEW</div>
+                    {bookName}
                 </h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                <p>By : {author}</p>
+                <hr/>
+                <div className=" card-actions items-center justify-between">
+                    <div className="">{category}</div>
+                    <div className="">{rating} ⭐</div>
                 </div>
             </div>
         </div>
