@@ -1,3 +1,4 @@
+import { Star } from 'lucide-react';
 import React, { use } from 'react';
 
 const Book = ({ singleBook }) => {
@@ -10,15 +11,15 @@ const Book = ({ singleBook }) => {
     return (
                                
         <div className=" card bg-base-100 w-full h-full shadow-sm border border-mist-500 p-6">
-            <figure className='w-full h-96 bg-mist-600 rounded-xl'>
+            <figure className='w-full h-96 bg-mist-500 rounded-xl'>
                 <img className='w-60 h-85 object-contain'
                     src={image} />
             </figure>
             <div className="card-body">
-                <div className='flex justify-center gap-2 items-end text-lime-400'>
+                <div className='flex justify-center shadow-2xl gap-2 items-end text-gray-400'>
                     {
                         singleBook.tags.map((tag, index) => (
-                            <p className='border px-3 rounded-xl ' key={index}>{tag}</p>
+                            <button className='border font-medium text-lime-400 px-3 mr-2 rounded-xl ' key={index}>{tag}</button>
                         ))
                     }
                 </div>
@@ -27,10 +28,10 @@ const Book = ({ singleBook }) => {
                     {bookName}
                 </h2>
                 <p className='text-[16px] font-medium'>By : {author}</p>
-                <hr/>
+                <hr className='border-dashed'/>
                 <div className=" text-[16px] card-actions items-center justify-between">
                     <div className="">{category}</div>
-                    <div className="">{rating} ⭐</div>
+                    <div className="flex items-center justify-center gap-1">{rating}<Star></Star></div>
                 </div>
             </div>
         </div>
