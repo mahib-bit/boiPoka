@@ -1,9 +1,14 @@
 import React from 'react';
+import { addToStoredDB } from '../../utility/adToDB';
 
 const BookDetail = ({ detail }) => {
 
     const {
         bookId, review, bookName, author, image, rating, category, tags, totalPages, publisher, yearOfPublishing } = detail;
+
+    const handleMarkAsRead = id => {
+        addToStoredDB(id)
+    }
 
     return (
 
@@ -62,8 +67,8 @@ const BookDetail = ({ detail }) => {
                         Rating: <span className="font-bold">{rating}</span>
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                        <button className="btn text-black bg-gray-300 w-full sm:w-auto">
-                            Read
+                        <button onClick={(id) => handleMarkAsRead(bookId)} className="btn text-black bg-gray-300 w-full sm:w-auto">
+                          Mark as Read
                         </button>
                         <button className="btn bg-cyan-600 w-full sm:w-auto">
                             Wishlist
