@@ -24,6 +24,11 @@ export const router = createBrowserRouter([
       },
       {
         path : '/details/:id',
+        loader: ({params}) => fetch('booksData.json')
+                .then(res => res.json())
+                .then(books =>
+                  books.find(book => book.bookId == params.id)
+                ),
         Component : BookDetails,
       }
     ]
