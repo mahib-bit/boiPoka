@@ -1,11 +1,14 @@
 import React, { use } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useParams } from 'react-router';
 import BookDetail from '../BookDetail/BookDetail';
 
 const BookDetails = () => {
 
-    const detail = useLoaderData();
-    // console.log(details);
+    const {id} =useParams();
+    const singleBook = useLoaderData();
+
+    const detail = singleBook.find(book => book.bookId == id);
+    // console.log(detail)
 
     return (
         <div>
