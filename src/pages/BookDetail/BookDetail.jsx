@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { addToStoredDB } from '../../utility/adToDB';
 
 const BookDetail = ({ detail }) => {
 
-    const {
-        bookId, review, bookName, author, image, rating, category, tags, totalPages, publisher, yearOfPublishing } = detail;
+    const {bookId, review, bookName, author, image, rating, category, tags, totalPages, publisher, yearOfPublishing } = detail;
+
+    const [isRead, setIsRead] = useState();
+    const [isWishlist, setIsWishlist] = useState();
 
     const handleMarkAsRead = id => {
         addToStoredDB(id)
+        setIsRead(true);
+    }
+
+    const handleWishlist = id => {
+        setIsWishlist(true);
     }
 
     return (
-
         <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-
             <div className="lg:flex items-center justify-between bg-gray-800 rounded-2xl overflow-hidden">
                 <div className="p-6 sm:p-10 lg:p-16 lg:w-1/2 bg-mist-500 rounded-2xl flex justify-center">
                     <img
@@ -67,11 +73,13 @@ const BookDetail = ({ detail }) => {
                         Rating: <span className="font-bold">{rating}</span>
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                        <button onClick={(id) => handleMarkAsRead(bookId)} className="btn text-black bg-gray-300 w-full sm:w-auto">
-                          Mark as Read
+                        <button onClick={(id) => handleMarkAsRead(bookId)} className={`btn w-full sm:w-auto ${isRead ? " text-white bg-red-900" : "text-black bg-gray-300 "
+                            }`}>
+                            {isRead ? "Read" : "Mark as Read"}
                         </button>
-                        <button className="btn bg-cyan-600 w-full sm:w-auto">
-                            Wishlist
+                        <button onClick={(id) => handleWishlist(bookId)} className={`btn w-full sm:w-auto ${isWishlist ? " text-white bg-green-900" : "bg-cyan-600"
+                            }`}>
+                            {isWishlist ? "Wishlisted" : "Wishlist"}
                         </button>
                     </div>
                 </div>
