@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { addToStoredDB } from '../../utility/adToDB';
+import { addToStoredDB, addToStoredWishList } from '../../utility/adToDB';
 
 const BookDetail = ({ detail }) => {
 
@@ -15,6 +15,7 @@ const BookDetail = ({ detail }) => {
     }
 
     const handleWishlist = id => {
+        addToStoredWishList(id);
         setIsWishlist(true);
     }
 
